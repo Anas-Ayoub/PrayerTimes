@@ -43,6 +43,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   curved_navigation_bar: ^1.0.3
   circle_nav_bar: ^2.0.1+1
+  riverpod: ^2.4.9
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,8 @@ flutter:
     - lib\assets\images\maghrib1.jpg
     - lib\assets\images\isha1.jpg
     - lib/assets/icons/
+    - lib/data/adkar.json
+    - lib/data/asmaa.json
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

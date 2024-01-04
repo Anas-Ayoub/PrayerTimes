@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prayertime/screens/adkar_screen.dart';
+import 'package:prayertime/screens/asmaa_screen.dart';
 import 'package:prayertime/services/prayer_api.dart';
 import 'package:prayertime/widgets/button_navbar.dart';
 import 'package:prayertime/widgets/header_Image.dart';
@@ -7,12 +9,13 @@ import 'package:prayertime/widgets/prayer_card.dart';
 
 class PrayerScreen extends StatefulWidget {
   const PrayerScreen({Key? key}) : super(key: key);
-
+  static late Function(bool b) setArrowShow;
   @override
   State<PrayerScreen> createState() => _PrayerScreenState();
 }
 
 class _PrayerScreenState extends State<PrayerScreen> {
+  bool showArrow = false;
   late Future<Map<String, String>> prayerTimesFuture;
   Map<String, String>? prayerTimesTZ;
   Map<int, String> getTitle = {
@@ -30,8 +33,12 @@ class _PrayerScreenState extends State<PrayerScreen> {
   @override
   void initState() {
     super.initState();
-    print(DateTime.now());
-    // Initialize prayerTimesFuture
+
+    PrayerScreen.setArrowShow = (b) {
+      setState(() {
+        showArrow = b;
+      });
+    };
     prayerTimesFuture = getTimingsForDate(currentDate);
 
     // Fetch prayer times and update the instance variable
@@ -87,18 +94,8 @@ class _PrayerScreenState extends State<PrayerScreen> {
           },
         ),
       ),
-      Text(
-        'Likes',
-        style: optionStyle,
-      ),
-      Text(
-        'Search',
-        style: optionStyle,
-      ),
-      Text(
-        'Profile',
-        style: optionStyle,
-      ),
+      NamesList(),
+      AdkarScreen(setArrowShow: PrayerScreen.setArrowShow),
     ]);
   }
 
@@ -111,11 +108,12 @@ class _PrayerScreenState extends State<PrayerScreen> {
         selectedIndex: _selectedIndex,
         onTabChange: (index) {
           setState(() {
+            showArrow = false;
             _selectedIndex = index;
           });
         },
       ),
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color.fromARGB(192, 26, 24, 24),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -139,14 +137,41 @@ class _PrayerScreenState extends State<PrayerScreen> {
                 ),
               ], color: Color.fromARGB(255, 44, 43, 59)),
               height: 50,
-              child: Center(
-                child: Text(
-                  title ?? "",
-                  style: GoogleFonts.cairo(
-                    color: Colors.white,
-                    fontSize: 23,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: showArrow
+                        ? IconButton(
+                            onPressed: () {
+                              AdkarScreen.empty();
+                            },
+                            icon: const Center(
+                              child: Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                                size: 38,
+                              ),
+                            ),
+                          )
+                        : const SizedBox(),
                   ),
-                ),
+                  Center(
+                    child: Text(
+                      title ?? "",
+                      style: GoogleFonts.cairo(
+                        color: Colors.white,
+                        fontSize: 23,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 50,
+                  ),
+                ],
               ),
             ),
             _widgetOptions.elementAt(_selectedIndex),

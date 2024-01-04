@@ -7,7 +7,7 @@ var targetDate =
     DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
 var prayerTimings;
 const req =
-    'http://api.aladhan.com/v1/calendar/2023/12?latitude=33.58844012740967&longitude=-7.498331324332838&method=21';
+    'http://api.aladhan.com/v1/calendar/2024/1?latitude=33.58844012740967&longitude=-7.498331324332838&method=21';
 
 Future<PrayerTimings> fetchData() async {
   final response = await http.get(Uri.parse(req));
