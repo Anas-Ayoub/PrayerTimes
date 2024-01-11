@@ -14,10 +14,8 @@ class AdkarCard extends StatelessWidget {
         title: Text(categories[index]['category']),
         subtitle: Text('Array Length: ${categories[index]['length']}'),
         onTap: () {
-          // Handle tapping on a category (navigate to another screen, etc.)
           int categoryId = categories[index]['id'];
           List<dynamic> categoryArray = AdkarData.getArrayById(categoryId);
-          // Do something with the categoryArray
         },
       ),
     );
