@@ -1,16 +1,17 @@
-# prayertime
+# Prayer Time App
 
-A new Flutter project.
+**Description:**
 
-## Getting Started
+Welcome to the Prayer Time App – your companion for staying connected with prayer times and enhancing your spiritual journey. This app utilizes an API to provide accurate prayer timings, along with additional features such as Adkar lists and more. Stay organized and focused on your prayers with the Prayer Time App.
 
-This project is a starting point for a Flutter application.
+**Features:**
 
-A few resources to get you started if this is your first Flutter project:
+- **Accurate Prayer Timings:** Access precise prayer times based on your location using an API.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Adkar Lists:** Explore a curated collection of Adkar to enhance your spiritual practice.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Additional Features:** Discover additional features to support your daily spiritual routine.
+
+**Screenshot:**
+
+![Demo Screenshot](Demo/demo.png)
